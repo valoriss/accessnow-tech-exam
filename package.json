@@ -1,0 +1,35 @@
+{
+  "name": "accessnow-tech-exam",
+  "version": "1.0.0",
+  "description": "Technical exam for AccessNow",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/service.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valoriss/accessnow-tech-exam.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valoriss/accessnow-tech-exam/issues"
+  },
+  "homepage": "https://github.com/valoriss/accessnow-tech-exam#readme",
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "express": "^4.17.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  }
+}
