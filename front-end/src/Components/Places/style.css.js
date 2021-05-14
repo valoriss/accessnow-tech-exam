@@ -5,6 +5,18 @@ export const cardStyle = () => ({
 
 export const textBoxStyle = () => ({
     borderRadius: '0',
-    width: '40%', 
+    width: '100%', 
     margin: '2rem',
 })
+
+export const buttonStyle = () => ({
+    borderRadius: '20',
+    backgroundColor: '#4c8bf5',
+    color: 'white',
+    justifyContent: 'center',
+});
+
+export const gridStyleCenter = () => ({
+    alignItems: "center",
+    justify: "center",
+});

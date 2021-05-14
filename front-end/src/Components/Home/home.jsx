@@ -14,6 +14,15 @@ import {
 } from './style.css';
 
 export default function Home() {
+  useEffect(() => {
+    window.addEventListener('deviceorientation', ({ absolute, gamma, beta, alpha }) => console.log({ absolute, gamma, beta, alpha }));
+    window.addEventListener('devicemotion', ({ x, y, z}) => console.log({x, y, z}));
+  
+    return () => {
+      window.removeEventListener('deviceorientation', handleOrientation, true);
+      window.addEventListener('devicemotion', ({ x, y, z}) => console.log({x, y, z}));
+    }
+ }, []);
 
     return (
       <React.Fragment>
