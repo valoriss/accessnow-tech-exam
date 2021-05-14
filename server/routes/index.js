@@ -3,6 +3,6 @@ const endpoint = require('./endpoint');
 
 const router = new express.Router();
 
-router.use('/endpoint', endpoint);
+router.use('/places', endpoint);
 
 module.exports = router;
