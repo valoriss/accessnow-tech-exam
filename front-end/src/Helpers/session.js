@@ -1,18 +1,30 @@
 import request from 'superagent';
 
-export const handleSessionEnd = () => {
-    // get session uuid for user
-    const sessionId = localStorage.getItem('user_session_id');
-    const startTime = localStorage.getItem('start_time');
+// TODO move baseUrl to .env after MVP stage
+const baseUrl = 'http://localhost:3001/api/latest/session';
 
-    if (!sessionId || !startTime) return;
+export const handleSessionEnd = async () => {
+  // get session uuid for user
+  const userId = localStorage.getItem('user_session_id');
+  let sessionStart = localStorage.getItem('start_time');
 
-    const sessionTimeLength = Math.floor((new Date()).getTime() / 1000) - startTime;
+  if (!userId || !sessionStart) return;
 
-    try {
-        // call user session 
-        // POST/ /user_session
-    } catch (e) {
-        console.log('unable to update user session information');
-    }
+  sessionStart = new Date(sessionStart);
+  const sessionEnd = new Date();
+  const startTime = Math.floor(sessionStart.getTime() / 1000);
+  const sessionLength = Math.floor(sessionEnd.getTime() / 1000) - startTime;
+
+  try {
+    await request.post(`${baseUrl}/`)
+      .type('application/json')
+      .send({
+        user_id: userId,
+        sessionStart,
+        sessionEnd,
+        sessionLength,
+      });
+  } catch (e) {
+      console.log('unable to update user session information', e);
+  }
 }

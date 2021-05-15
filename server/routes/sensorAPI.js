@@ -3,7 +3,7 @@ const { Accelerometer, Orientation } = require('../db');
 
 const router = new express.Router();
 
-router.post('/accelerometer', (req) => {
+router.post('/accelerometer', async (req) => {
   console.log('UPDATING ACCELEROMETER DATA', req.body);
 
   const {
@@ -14,16 +14,20 @@ router.post('/accelerometer', (req) => {
   } = req.body;
 
   // Create database record for user with x/y/z coordinates
-  Accelerometer.create({
-    user_id: userId,
-    x,
-    y,
-    z,
-    createdAt: new Date(),
-  });
+  try {
+    await Accelerometer.create({
+      user_id: userId,
+      x,
+      y,
+      z,
+      created_at: new Date(),
+    });
+  } catch (e) {
+    console.log('Unable to create accelerometer reading for user:', userId, e);
+  }
 });
 
-router.post('/orientation', (req) => {
+router.post('/orientation', async (req) => {
   console.log('UPDATING ORIENTATION DATA', req.body);
 
   const {
@@ -35,14 +39,18 @@ router.post('/orientation', (req) => {
   } = req.body;
 
   // Create new log for orientation
-  Orientation.create({
-    user_id: userId,
-    absolute,
-    gamma,
-    alpha,
-    beta,
-    createdAt: new Date(),
-  });
+  try {
+    await Orientation.create({
+      user_id: userId,
+      absolute,
+      gamma,
+      alpha,
+      beta,
+      created_at: new Date(),
+    });
+  } catch (e) {
+    console.log('Unable to create orientation reading for user:', userId, e);
+  }
 });
 
 module.exports = router;

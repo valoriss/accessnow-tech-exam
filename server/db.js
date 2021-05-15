@@ -8,6 +8,7 @@ const sequelizeInstance = new Sequelize({
 const init = async () => {
   try {
     await sequelizeInstance.authenticate();
+    await sequelizeInstance.sync({ force: true });
 
     console.log('Database connection established successfully');
   } catch (e) {
@@ -21,17 +22,17 @@ const Accelerometer = sequelizeInstance.define('accelerometers', {
   x_position: { type: Sequelize.DOUBLE },
   y_position: { type: Sequelize.DOUBLE },
   z_position: { type: Sequelize.DOUBLE },
-  createdAt: { type: Sequelize.DATE },
+  created_at: { type: Sequelize.DATE },
 });
 
 const Orientation = sequelizeInstance.define('orientations', {
   id: { type: Sequelize.UUID, defaultValue: Sequelize.UUIDV4, primaryKey: true },
   user_id: { type: Sequelize.UUID, required: true, allowNull: false },
-  absolute: { type: Sequelize.DOUBLE },
+  absolute: { type: Sequelize.BOOLEAN },
   gamma: { type: Sequelize.DOUBLE },
   alpha: { type: Sequelize.DOUBLE },
   beta: { type: Sequelize.DOUBLE },
-  createdAt: { type: Sequelize.DATE },
+  created_at: { type: Sequelize.DATE },
 });
 
 const UserSession = sequelizeInstance.define('user_sessions', {
@@ -39,7 +40,7 @@ const UserSession = sequelizeInstance.define('user_sessions', {
   session_start: { type: Sequelize.DATE, allowNull: false },
   session_end: { type: Sequelize.DATE },
   session_length: { type: Sequelize.DOUBLE },
-  createdAt: { type: Sequelize.DATE },
+  created_at: { type: Sequelize.DATE },
 });
 
 module.exports = {

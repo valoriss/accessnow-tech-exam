@@ -3,7 +3,7 @@ const { UserSession } = require('../db');
 
 const router = new express.Router();
 
-router.post('/', (req) => {
+router.post('/', async (req) => {
   console.log('CREATING USER SESSION LOG', req.body);
 
   const {
@@ -13,11 +13,17 @@ router.post('/', (req) => {
     sessionLength,
   } = req.body;
 
-  UserSession.create({
-    user_id: userId,
-    sessionStart,
-    sessionEnd,
-    sessionLength,
-    createdAt: new Date(),
-  });
+  try {
+    await UserSession.create({
+      user_id: userId,
+      session_start: sessionStart,
+      session_end: sessionEnd,
+      session_lengh: sessionLength,
+      created_at: new Date(),
+    });
+  } catch (e) {
+    console.log('unable to create user session log', userId, e)
+  }
 });
+
+module.exports = router;

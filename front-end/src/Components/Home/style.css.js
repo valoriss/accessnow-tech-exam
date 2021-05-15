@@ -11,7 +11,6 @@ export const flexStartStyle = () => ({
 });
 
 export const headerStyle = (additionalStyle) => ({
-  //  display: 'flex',
   fontWeight: 'bold',
   marginBottom: '10px',
   marginTop: '0',

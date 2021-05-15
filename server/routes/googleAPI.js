@@ -16,7 +16,14 @@ router.get('/', async (req, res) => {
 
   const baseUrl = 'https://maps.googleapis.com/maps/api/place/autocomplete/json';
   const url = `${baseUrl}?input=${req.query.input}&key=${key}`;
-  const response = await request.get(url);
+
+  let response;
+
+  try {
+    response = await request.get(url);
+  } catch (e) {
+    res.status(400).send({ body: [] });
+  }
 
   if (response && response.body.predictions) {
     const { predictions } = response.body;
