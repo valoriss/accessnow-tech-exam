@@ -1,17 +1,21 @@
 const express = require('express');
 const request = require('superagent');
 
+const key = require('../secrets');
+
 const router = new express.Router();
 
 router.get('/', async (req, res) => {
+  console.log('GETTING PLACES SUGGESTION VIA GOOGLE API');
+
   if (!req) {
     res.status(400).send('invalid input');
 
     return;
   }
 
-  // TODO move key to secrets after MVP completion
-  const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${req.query.input}&key=AIzaSyDagu9gRiefgPSFYQTCCRXRKjutQ3irzKI`;
+  const baseUrl = 'https://maps.googleapis.com/maps/api/place/autocomplete/json';
+  const url = `${baseUrl}?input=${req.query.input}&key=${key}`;
   const response = await request.get(url);
 
   if (response && response.body.predictions) {

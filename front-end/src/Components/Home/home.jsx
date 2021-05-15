@@ -1,26 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Container from '@material-ui/core/Container';
-import Card from '@material-ui/core/Card';
 import Appbar from '@material-ui/core/AppBar';
+import { v4 as uuidv4 } from 'uuid';
+
 import Places from '../Places/places';
+import { handleOrientation, handleAccelerometer } from '../../Helpers/sensors';
+import { handleSessionEnd } from '../../Helpers/session';
 
 import {
     center,
-    backgroundStyle,
     headerStyle,
-    flexStartStyle,
     smallHeader,
     appBarStyle,
 } from './style.css';
 
 export default function Home() {
+  window.addEventListener("onbeforeunload", handleSessionEnd());
+
   useEffect(() => {
-    window.addEventListener('deviceorientation', ({ absolute, gamma, beta, alpha }) => console.log({ absolute, gamma, beta, alpha }));
-    window.addEventListener('devicemotion', ({ x, y, z}) => console.log({x, y, z}));
+    localStorage.setItem('user_session_id', uuidv4());
+
+    const createTimeStampSeconds = Math.floor((new Date()).getTime() / 1000);
+
+    localStorage.setItem('start_time', createTimeStampSeconds);
+
+    window.addEventListener('deviceorientation', ({ absolute, gamma, beta, alpha }) => handleOrientation({ absolute, gamma, beta, alpha }));
+    window.addEventListener('devicemotion', ({ x, y, z}) => handleAccelerometer({x, y, z}));
   
     return () => {
-      window.removeEventListener('deviceorientation', handleOrientation, true);
-      window.addEventListener('devicemotion', ({ x, y, z}) => console.log({x, y, z}));
+      window.removeEventListener('deviceorientation', ({ absolute, gamma, beta, alpha }) => handleOrientation({ absolute, gamma, beta, alpha }));
+      window.removeEventListener('devicemotion', ({ x, y, z}) => handleAccelerometer({x, y, z}));
+      window.removeEventListener("beforeunload", handleSessionEnd());
     }
  }, []);
 
@@ -29,7 +39,7 @@ export default function Home() {
         <Appbar style={appBarStyle()}>
           <Container style={center()}>
             <div>
-              <h1 style={smallHeader()}>Welcome to</h1>
+              <h1 style={smallHeader()}>Technical assignment</h1>
               <h1 style={headerStyle()}>AccessNow</h1>
             </div>
           </Container>

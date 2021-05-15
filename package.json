@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Technical exam for AccessNow",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node server/service.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,6 +25,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "request": "^2.88.2",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2",
     "superagent": "^6.1.0"
   },
   "devDependencies": {

@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const { init } = require('./db');
+
 const routes = require('./routes');
 
 const PORT = process.env.PORT || 3001;
@@ -11,3 +13,5 @@ app.use('/api/latest', cors(), routes);
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
+
+init();

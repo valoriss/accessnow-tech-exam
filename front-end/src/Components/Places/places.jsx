@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import {
   cardStyle, textBoxStyle, buttonStyle, gridStyleCenter,
 } from './style.css';
-import getPlaces from '../../Service/places';
+import getPlaces from '../../Helpers/places';
 import { Button } from '@material-ui/core';
 
 const renderListItems = (description, onClick) => {
