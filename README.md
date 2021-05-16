@@ -11,11 +11,7 @@ git clone <url>
 
 From root folder, in CLI of your choice, use the npm scripts to install and run PlacesNow.
 
-```bash
-npm start
-```
-
-Troubleshoot: If npm start doesn't work because modules aren't installed, you can do it manually:
+On first launch:
 ```
 // cd into root folder
 npm i
@@ -26,6 +22,9 @@ npm i
 npm start
 ```
 *If you don't kill the port processes, then you will have to individually start and kill process to run this web app locally.
+*I made it easy to kill the ports, run the following command: `npm stop` 
+
+After first launch you can run `npm start` from the root folder to launch everything.
 
 ## Places
 You can input your own location search values in the "Find Location" input field. This field is populated by default.
