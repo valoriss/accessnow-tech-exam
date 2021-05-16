@@ -1,6 +1,6 @@
 # PlacesNow (AccessNow Technical Exam)
 
-PlacesNow is a web app build in React (front-end), node (back-end), javascript, sequelize, sqlite3, and external API's like Google's Place API.
+PlacesNow is a web app build in React (front-end), node (back-end), javascript, sequelize, sqlite3 (Used this instead of postgres because its self-contained, file-based, and known for its portability), and external API's like Google's Place API.
 
 ## Installation
 
