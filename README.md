@@ -15,10 +15,10 @@ On first launch:
 ```
 // cd into root folder
 npm i
-npm start
-
 cd front-end
 npm i
+
+cd ..
 npm start
 ```
 *If you don't kill the port processes, then you will have to individually start and kill process to run this web app locally.
