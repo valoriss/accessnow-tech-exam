@@ -1,13 +1,16 @@
 const Sequelize = require('sequelize');
 
+// Define sequelize database instance
 const sequelizeInstance = new Sequelize({
   dialect: 'sqlite',
-  storage: './database.sqlite',
+  storage: './database.sqlite', // Database output can be found in root folder
 });
 
 const init = async () => {
   try {
+    // Check if connection is successful
     await sequelizeInstance.authenticate();
+    // drop and create tables on server init
     await sequelizeInstance.sync({ force: true });
 
     console.log('Database connection established successfully');

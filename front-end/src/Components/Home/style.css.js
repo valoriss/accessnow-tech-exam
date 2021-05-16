@@ -1,13 +1,7 @@
-export const center = () => ({
+export const centerStyle = () => ({
   display: 'flex',
-  //flexWrap: 'wrap',
   justifyContent: 'center',
-  textAlign: 'center'
-});
-
-export const flexStartStyle = () => ({
-  justifyContent: 'flex-start',
-  display: 'flex',
+  textAlign: 'center',
 });
 
 export const headerStyle = (additionalStyle) => ({
@@ -17,10 +11,10 @@ export const headerStyle = (additionalStyle) => ({
   ...additionalStyle,
 });
 
-export const smallHeader = () => ({
+export const smallHeaderStyle = () => ({
   fontWeight: 'lighter',
   fontSize: '18px',
-  margin: '12px 0 0 0'
+  margin: '12px 0 0 0',
 });
 
 export const appBarStyle = () => ({

@@ -1,3 +1,5 @@
+/* All external google API calls through our back-end will be received here */
+
 const express = require('express');
 const request = require('superagent');
 

@@ -1,3 +1,5 @@
+/* All session related API calls will be received here */
+
 const express = require('express');
 const { UserSession } = require('../db');
 
@@ -22,7 +24,7 @@ router.post('/', async (req) => {
       created_at: new Date(),
     });
   } catch (e) {
-    console.log('unable to create user session log', userId, e)
+    console.log('unable to create user session log', userId, e);
   }
 });
 

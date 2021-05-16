@@ -1,3 +1,5 @@
+/* All sensor API calls to update/create/get/ will be received here */
+
 const express = require('express');
 const { Accelerometer, Orientation } = require('../db');
 
