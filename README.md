@@ -25,6 +25,7 @@ cd front-end
 npm i
 npm start
 ```
+*If you don't kill the port processes, then you will have to individually start and kill process to run this web app locally.
 
 ## Places
 You can input your own location search values in the "Find Location" input field. This field is populated by default.
