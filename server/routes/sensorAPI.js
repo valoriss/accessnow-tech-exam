@@ -1,4 +1,4 @@
-/* All sensor API calls to update/create/get/ will be received here */
+/* All sensor related API calls will be received here */
 
 const express = require('express');
 const { Accelerometer, Orientation } = require('../db');
@@ -15,7 +15,7 @@ router.post('/accelerometer', async (req) => {
     userId,
   } = req.body;
 
-  // Create database record for user with x/y/z coordinates
+  /* Create database record for user with x/y/z coordinates */
   try {
     await Accelerometer.create({
       user_id: userId,
@@ -40,7 +40,7 @@ router.post('/orientation', async (req) => {
     beta,
   } = req.body;
 
-  // Create new log for orientation
+  /* Create new log for orientation */
   try {
     await Orientation.create({
       user_id: userId,

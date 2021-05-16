@@ -7,7 +7,7 @@
   "scripts": {
     "start": "npm i & (cd front-end && npm i && cd ..) & node server/service.js & (cd front-end && npm start)",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "stop": " kill -9 $(lsof -i:3001 -t) 2> /dev/null "
+    "stop": " kill -9 $(lsof -i:3001 -t) 2> /dev/null & (kill -9 $(lsof -i:3000 -t) 2> /dev/null)"
   },
   "repository": {
     "type": "git",
