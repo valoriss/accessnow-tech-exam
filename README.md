@@ -26,7 +26,7 @@ npm i
 npm start
 ```
 
-## Usage
+## Places
 You can input your own location search values in the "Find Location" input field. This field is populated by default.
 You can clear all input by pressing the "X" button in the input field.
 
@@ -34,8 +34,10 @@ All output for locations (limit to 5 list items) will appear beneath the "Find L
 
 The List of places will have a "SELECT" button. Pressing this button will create a new Card Item with your selected choice.
 
+Places suggestion are acquired using Googles API. **Suggestions will update on each key press of user to provide most up to date suggestions**
+
 ## Sensors
-PlacesNow can test *two different sensors*, "Accelerometer" and "Device Orientations" (measuring tilt and movement of device). 
+PlacesNow can test **two different sensors**, "Accelerometer" and "Device Orientations" (measuring tilt and movement of device). 
 
 On device orientation shift or change in velocity/acceleration, PlacesNow will begin to log information to the database.
 
