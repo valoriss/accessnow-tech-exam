@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Technical exam for AccessNow",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node server/service.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm i & (cd front-end && npm i && cd ..) & node server/service.js & (cd front-end && npm start)",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stop": " kill -9 $(lsof -i:3001 -t) 2> /dev/null & (kill -9 $(lsof -i:3000 -t) 2> /dev/null)"
   },
   "repository": {
     "type": "git",
@@ -20,8 +22,13 @@
   "homepage": "https://github.com/valoriss/accessnow-tech-exam#readme",
   "dependencies": {
     "babel-eslint": "^10.1.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2",
+    "superagent": "^6.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
